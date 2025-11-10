@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/* Base layer: Design system color tokens and global styles */
+@layer base {
+  :root {
+    /* Layout colors */
+    --background: 0 0% 98%; /* #FAFAFA - Soft white background (not absolute white) */
+    --foreground: 0 0% 10%; /* #1A1A1A - Near black text for readability */
+
+    /* Card component colors */
+    --card: 0 0% 100%; /* #FFFFFF - White card background */
+    --card-foreground: 0 0% 10%; /* #1A1A1A - Near black card text */
+
+    /* Popover component colors */
+    --popover: 0 0% 100%; /* #FFFFFF - White popover background */
+    --popover-foreground: 0 0% 10%; /* #1A1A1A - Near black popover text */
+
+    /* Primary brand colors - Teal/cyan main color */
+    --primary: 186 59% 46%; /* #2FABB7 - Main teal/cyan color */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White text on primary */
+
+    /* Secondary brand colors - Gray */
+    --secondary: 0 0% 30%; /* #4D4D4D - Secondary gray color */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - White text on secondary */
+
+    /* Muted/subtle colors */
+    --muted: 0 0% 95%; /* #F2F2F2 - Very light gray muted background */
+    --muted-foreground: 0 0% 40%; /* #666666 - Medium gray text */
+
+    /* Accent colors - Using primary teal as accent */
+    --accent: 186 59% 46%; /* #2FABB7 - Teal accent color */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - White text on accent */
+
+    /* Destructive/error colors */
+    --destructive: 0 84% 60%; /* #E53E3E - Red for errors/destructive actions */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - White text on destructive */
+
+    /* Form element colors */
+    --border: 0 0% 88%; /* #E0E0E0 - Light gray borders */
+    --input: 0 0% 88%; /* #E0E0E0 - Light gray input borders */
+    --ring: 186 59% 46%; /* #2FABB7 - Teal focus rings */
+
+    /* Border radius */
+    --radius: 0.5rem; /* 8px - Default border radius */
+
+    /* Custom theme colors */
+    --hero-overlay: 0 0% 5%; /* #0D0D0D - Very dark overlay for hero sections */
+    --gold: 186 59% 46%; /* #2FABB7 - Using teal instead of gold */
+    --gold-hover: 186 59% 40%; /* #2A96A1 - Darker teal on hover */
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 98%; /* #FAFAFA - Soft white sidebar background */
+    --sidebar-foreground: 0 0% 10%; /* #1A1A1A - Near black sidebar text */
+    --sidebar-primary: 186 59% 46%; /* #2FABB7 - Teal sidebar primary */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - White text on sidebar primary */
+    --sidebar-accent: 0 0% 95%; /* #F2F2F2 - Light gray sidebar accent */
+    --sidebar-accent-foreground: 0 0% 10%; /* #1A1A1A - Near black text on sidebar accent */
+    --sidebar-border: 0 0% 88%; /* #E0E0E0 - Light gray sidebar borders */
+    --sidebar-ring: 186 59% 46%; /* #2FABB7 - Teal sidebar focus ring */
+  }
+
+  /* Dark mode color overrides */
+  .dark {
+    /* Layout colors - Dark theme */
+    --background: 0 0% 8%; /* #141414 - Very dark gray background (not absolute black) */
+    --foreground: 0 0% 95%; /* #F2F2F2 - Light gray text */
+
+    /* Card component colors - Dark theme */
+    --card: 0 0% 12%; /* #1F1F1F - Dark card background */
+    --card-foreground: 0 0% 95%; /* #F2F2F2 - Light card text */
+
+    /* Popover component colors - Dark theme */
+    --popover: 0 0% 12%; /* #1F1F1F - Dark popover background */
+    --popover-foreground: 0 0% 95%; /* #F2F2F2 - Light popover text */
+
+    /* Primary brand colors - Dark theme */
+    --primary: 186 59% 46%; /* #2FABB7 - Teal primary (same in dark mode) */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White text on primary */
+
+    /* Secondary brand colors - Dark theme */
+    --secondary: 0 0% 30%; /* #4D4D4D - Secondary gray (same in dark mode) */
+    --secondary-foreground: 0 0% 95%; /* #F2F2F2 - Light text on secondary */
+
+    /* Muted/subtle colors - Dark theme */
+    --muted: 0 0% 18%; /* #2E2E2E - Dark muted background */
+    --muted-foreground: 0 0% 65%; /* #A6A6A6 - Light muted text */
+
+    /* Accent colors - Dark theme */
+    --accent: 186 59% 46%; /* #2FABB7 - Teal accent (same in dark mode) */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - White text on accent */
+
+    /* Destructive/error colors - Dark theme */
+    --destructive: 0 62% 50%; /* #D32F2F - Darker red for errors */
+    --destructive-foreground: 0 0% 95%; /* #F2F2F2 - Light text on destructive */
+
+    /* Form element colors - Dark theme */
+    --border: 0 0% 25%; /* #404040 - Dark gray borders */
+    --input: 0 0% 25%; /* #404040 - Dark gray input borders */
+    --ring: 186 59% 46%; /* #2FABB7 - Teal focus rings */
+
+    /* Sidebar colors - Dark theme */
+    --sidebar-background: 0 0% 10%; /* #1A1A1A - Dark sidebar */
+    --sidebar-foreground: 0 0% 95%; /* #F2F2F2 - Light sidebar text */
+    --sidebar-primary: 186 59% 46%; /* #2FABB7 - Teal sidebar primary */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - White text on sidebar primary */
+    --sidebar-accent: 0 0% 18%; /* #2E2E2E - Dark gray sidebar accent */
+    --sidebar-accent-foreground: 0 0% 95%; /* #F2F2F2 - Light text on sidebar accent */
+    --sidebar-border: 0 0% 25%; /* #404040 - Dark gray sidebar borders */
+    --sidebar-ring: 186 59% 46%; /* #2FABB7 - Teal sidebar focus ring */
+  }
+}
+
+/* Global base styles */
+@layer base {
+  /* Apply border color to all elements */
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  /* Set body background and text colors from theme variables */
+  body {
+    @apply bg-background text-foreground;
+  }
+}
