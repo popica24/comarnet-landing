@@ -1,6 +1,6 @@
 export const roadmapData: RoadmapItem[] = [
   {
-    id: "1",
+    id: 1,
     category: "Fundație",
     date: "Mar. 2015",
     title: "Înființarea companiei de distribuție",
@@ -8,7 +8,7 @@ export const roadmapData: RoadmapItem[] = [
       "Compania a fost înființată cu scopul de a oferi servicii de distribuție de calitate. Am început cu o echipă mică și o viziune clară pentru viitor.",
   },
   {
-    id: "2",
+    id: 2,
     category: "Dezvoltare",
     date: "Mar. 2017",
     title: "Extinderea rețelei de distribuție",
@@ -16,7 +16,7 @@ export const roadmapData: RoadmapItem[] = [
       "Am extins rețeaua de distribuție la nivel național. Am deschis noi depozite și am îmbunătățit procesele logistice pentru o eficiență mai mare.",
   },
   {
-    id: "3",
+    id: 3,
     category: "Creștere",
     date: "Mar. 2019",
     title: "Diversificarea portofoliului de produse",
@@ -24,7 +24,7 @@ export const roadmapData: RoadmapItem[] = [
       "Am adăugat noi categorii de produse în portofoliu. Colaborările cu furnizori de încredere ne-au permis să oferim o gamă mai largă de servicii clienților.",
   },
   {
-    id: "4",
+    id: 4,
     category: "Modernizare",
     date: "Mar. 2021",
     title: "Implementarea sistemelor digitale",
@@ -32,7 +32,7 @@ export const roadmapData: RoadmapItem[] = [
       "Am investit în tehnologie modernă pentru optimizarea proceselor. Sistemele digitale au îmbunătățit viteza de livrare și transparența operațiunilor.",
   },
   {
-    id: "5",
+    id: 5,
     category: "Expansiune",
     date: "Mar. 2022",
     title: "Deschiderea de noi centre logistice",
@@ -40,7 +40,7 @@ export const roadmapData: RoadmapItem[] = [
       "Am deschis centre logistice în zone strategice. Această expansiune ne-a permis să servim mai eficient clienții din toate regiunile țării.",
   },
   {
-    id: "6",
+    id: 6,
     category: "Inovație",
     date: "Mar. 2023",
     title: "Lansarea serviciilor de livrare rapidă",
@@ -48,7 +48,7 @@ export const roadmapData: RoadmapItem[] = [
       "Am introdus servicii de livrare în 24 de ore. Flota modernizată și procesele optimizate asigură livrări rapide și sigure pentru toți clienții.",
   },
   {
-    id: "7",
+    id: 7,
     category: "Sustenabilitate",
     date: "Mar. 2024",
     title: "Implementarea soluțiilor ecologice",
@@ -58,7 +58,7 @@ export const roadmapData: RoadmapItem[] = [
 ];
 
 type RoadmapItem = {
-  id: string;
+  id: number;
   category: string;
   date: string;
   title: string;
@@ -119,7 +119,6 @@ const RoadmapItem: React.FC<RoadmapItemProps> = ({ item, isLast }) => {
     <div className="relative pl-8 sm:pl-32 py-6 group">
       <div
         className="font-caveat font-medium text-2xl text-primary mb-1 sm:mb-0"
-        className="text-xl font-bold text-slate-900"
         data-aos="fade-left"
         data-aos-duration="800"
         data-aos-delay={300 * item.id}
