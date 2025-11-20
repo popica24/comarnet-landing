@@ -10,7 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 const HeroSection = () => {
-  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 4000 }));
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
@@ -21,7 +21,7 @@ const HeroSection = () => {
           alt="Distribuție produse alimentare Comar Net"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-hero-overlay/95 via-hero-overlay/80 to-hero-overlay/70 md:from-hero-overlay/90 md:via-hero-overlay/70 md:to-hero-overlay/60" />
+        <div className="absolute inset-0 bg-linear-to-r from-hero-overlay/95 via-hero-overlay/80 to-hero-overlay/70 md:from-hero-overlay/90 md:via-hero-overlay/70 md:to-hero-overlay/60" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">

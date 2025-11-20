@@ -113,13 +113,22 @@
 
 /* Global base styles */
 @layer base {
-  /* Apply border color to all elements */
   * {
-    border-color: hsl(var(--border));
+    @apply border-border;
   }
 
-  /* Set body background and text colors from theme variables */
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer utilities {
+  .clip-diagonal-top {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  }
+  .clip-diagonal-middle {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%);
+  }
+  .clip-diagonal-bottom {
+    clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%);
   }
 }
