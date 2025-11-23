@@ -1,16 +1,18 @@
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
-import { Phone, ArrowUpRight, Menu, X } from "lucide-react";
+import { Phone, ArrowUpRight, Menu, X, Clock } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = [
-    { text: "Acasă", link: "/" },
-    { text: "Servicii", link: "/servicii" },
-    { text: "Pall-Ex", link: "/pall-ex" },
-    { text: "Aria1", link: "/aria1" },
+    { text: "Acasă", link: "/", comingSoon: false },
+    { text: "Servicii", link: "/servicii", comingSoon: false },
+    { text: "Pall-Ex", link: "/pall-ex", comingSoon: false },
+    { text: "Aria1", link: "#", comingSoon: true },
+    { text: "Comar Net Shop", link: "#", comingSoon: true },
   ];
 
   const requestOffer = () => {
@@ -84,32 +86,62 @@ const Navigation = () => {
     });
   };
 
+  const handleComingSoonClick = (e: React.MouseEvent, itemText: string) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "În Curând!",
+      html: `<div style="text-align: center;">
+        <p style="margin-bottom: 8px;">Pagina <strong>${itemText}</strong> va fi disponibilă în curând.</p>
+        <p style="color: #888; font-size: 14px;">Lucrăm pentru a vă oferi cea mai bună experiență.</p>
+      </div>`,
+      icon: "info",
+      confirmButtonText: "Am înțeles",
+      customClass: {
+        popup: "rounded-lg",
+      },
+    });
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-background/60 backdrop-blur-xs border-b border-border/50 shadow-lg z-50">
       <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link className="flex items-center gap-2" to="/">
-            <img src={logo} width={85} />
+            <img src={logo} width={85} alt="Logo" />
           </Link>
 
           {/* Desktop Menu Items */}
           <div className="hidden lg:flex items-center gap-8">
             {menuItems.map((item, index) => (
-              <Link
-                key={index}
-                to={item.link}
-                className="text-sm font-mediu text-foreground hover:text-gold transition-colors duration-300 uppercase"
-              >
-                {item.text}
-              </Link>
+              <div key={index} className="relative group">
+                {item.comingSoon ? (
+                  <button
+                    onClick={(e) => handleComingSoonClick(e, item.text)}
+                    className="text-sm font-medium text-foreground/60 hover:text-gold/70 transition-colors duration-300 uppercase flex items-center gap-2 cursor-pointer"
+                  >
+                    {item.text}
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-semibold uppercase border border-gold/20">
+                      <Clock className="w-3 h-3" />
+                      Curând
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    to={item.link}
+                    className="text-sm font-medium text-foreground hover:text-gold transition-colors duration-300 uppercase"
+                  >
+                    {item.text}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
           {/* Right Section */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Phone - Hidden on mobile */}
-            <div className="hidden xl:flex items-center gap- text-foreground">
+            <div className="hidden xl:flex items-center gap-2 text-foreground">
               <Phone className="w-5 h-5" />
               <div className="flex flex-col">
                 <span className="text-xs">Sună Acum</span>
@@ -136,9 +168,9 @@ const Navigation = () => {
               className="lg:hidden w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors duration-300"
             >
               {isMenuOpen ? (
-                <X className="w-5 h- text-foreground" />
+                <X className="w-5 h-5 text-foreground" />
               ) : (
-                <Menu className="w-5 h- text-foreground" />
+                <Menu className="w-5 h-5 text-foreground" />
               )}
             </button>
           </div>
@@ -149,14 +181,31 @@ const Navigation = () => {
           <div className="lg:hidden mt-4 pb-4 border-t border-primary-foreground/10 pt-4">
             <div className="flex flex-col gap-4">
               {menuItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  className="text-sm font-mediu text-foreground hover:text-gold transition-colors duration-300 py-2 uppercase"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.text}
-                </a>
+                <div key={index}>
+                  {item.comingSoon ? (
+                    <button
+                      onClick={(e) => {
+                        handleComingSoonClick(e, item.text);
+                        setIsMenuOpen(false);
+                      }}
+                      className="text-sm font-medium text-foreground/60 hover:text-gold/70 transition-colors duration-300 py-2 uppercase flex items-center justify-between w-full text-left"
+                    >
+                      {item.text}
+                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gold/10 text-gold text-[10px] font-semibold uppercase border border-gold/20">
+                        <Clock className="w-3 h-3" />
+                        Curând
+                      </span>
+                    </button>
+                  ) : (
+                    <Link
+                      to={item.link}
+                      className="text-sm font-medium text-foreground hover:text-gold transition-colors duration-300 py-2 uppercase block"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.text}
+                    </Link>
+                  )}
+                </div>
               ))}
 
               {/* Mobile CTA */}
@@ -171,7 +220,7 @@ const Navigation = () => {
               </Button>
 
               {/* Mobile Phone */}
-              <div className="xl:hidden flex items-center gap- text-foreground pt-2 border-t border-primary-foreground/10 mt-2">
+              <div className="xl:hidden flex items-center gap-2 text-foreground pt-2 border-t border-primary-foreground/10 mt-2">
                 <Phone className="w-5 h-5" />
                 <div className="flex flex-col">
                   <span className="text-xs">Sună Acum</span>

@@ -137,3 +137,19 @@ html,
 body {
   overflow-x: hidden;
 }
+.active-slide {
+  transform: translateY(-30px);
+}
+.active-slide div {
+  border-color: #4f70e6 !important;
+}
+.active-slide a {
+  opacity: 1 !important;
+}
+
+.text-number {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1a1a1a;
+  opacity: 0.2;
+}
