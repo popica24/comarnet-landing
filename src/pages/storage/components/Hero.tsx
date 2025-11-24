@@ -16,28 +16,28 @@ const Hero = () => {
           >
             <Sparkles className="h-4 w-4" />
             <span className="text-sm font-medium">
-              De incredere pentru <CountUp end={50} suffix="+" duration={2.5} />{" "}
+              De încredere pentru <CountUp end={50} suffix="+" duration={2.5} />{" "}
               de afaceri
             </span>
           </div>
 
           <div data-aos="fade-up">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Creste-ti afacerea
+              Depozitare fără limite,
               <span className="block bg-gradient-primary bg-clip-text text-primary mt-2">
-                Cu depozitarea noastra
+                pentru orice nevoie
               </span>
             </h1>
           </div>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            provident quasi natus nihil incidunt? Esse illum fugiat in rerum
-            nesciunt debitis aliquam ex, cum, qui totam, iure a ratione omnis!
+            Depozitul nostru din Pitești are peste 5.000 m² și este pregătit să
+            primească orice tip de marfă. Asigurăm spațiu generos, siguranță și
+            servicii adaptate nevoilor tale.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="shadow-elegant group">
-              Cere oferta
+              Cere o oferta
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -45,15 +45,15 @@ const Hero = () => {
           <div className="mt-8 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-primary"></div>
-              <span>Benficiu 1</span>
+              <span>Spațiu generos</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-primary"></div>
-              <span>Beneficiu 2</span>
+              <span>Siguranță garantată</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-primary"></div>
-              <span>Beneficiu 3</span>
+              <span>Flexibilitate totală</span>
             </div>
           </div>
         </div>

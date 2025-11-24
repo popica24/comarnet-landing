@@ -48,7 +48,7 @@ const HeroSection = () => {
 
                 {/* Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-primary-foreground mb-4 md:mb-6 leading-tight">
-                  Partenerul Dumneavoastră de Încredere
+                  Partenerul Dumneavoastră de încredere
                 </h1>
 
                 {/* Divider Line */}
@@ -56,9 +56,9 @@ const HeroSection = () => {
 
                 {/* Subheading */}
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-8 md:mb-10 leading-relaxed max-w-2xl">
-                  Peste două decenii de experiență în distribuția de produse
-                  alimentare de calitate superioară pentru profesioniști din
-                  industrie.
+                  Cu aproape două decenii de experiență în distribuția de
+                  produse alimentare și non-alimentare dedicate profesioniștilor
+                  din industrie.
                 </p>
 
                 {/* CTA Button */}
@@ -95,7 +95,7 @@ const HeroSection = () => {
                 {/* Subheading */}
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-8 md:mb-10 leading-relaxed max-w-2xl">
                   Livrări prompte, stocuri consistente și suport dedicat pentru
-                  succesul afacerii dumneavoastră în industria HoReCa.
+                  succesul afacerii dumneavoastră
                 </p>
 
                 {/* CTA Button */}

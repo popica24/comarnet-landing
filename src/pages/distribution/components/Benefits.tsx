@@ -3,12 +3,13 @@ import map from "@/assets/harta-romania.png";
 import { CheckCircle2 } from "lucide-react";
 
 const benefits = [
-  "Livrare rapidă și predictibilă pentru orice volum",
-  "Reducerea semnificativă a costurilor logistice",
+  "Livrare rapida",
+  "Suport dedicate si asistenta operationala",
   "Scalare ușoară în funcție de cerere și sezonalitate",
-  "Suport dedicat și asistență operațională",
-  "Integrare cu platformele tale de vânzare",
-  "Acces la tracking în timp real, de oriunde",
+  "Gama variata de produse",
+  "Experienta de peste 17 ani In domeniu",
+  "Flexibilitate",
+  "Siguranta",
 ];
 
 const Benefits = () => {

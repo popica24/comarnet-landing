@@ -1,10 +1,10 @@
 import CountUp from "react-countup";
 
 const data = {
-  years: 20,
-  cars: 15,
-  employees: 50,
-  clients: 20,
+  years: 17,
+  cars: 40,
+  employees: 75,
+  clients: 4300,
 };
 
 const Kpis = () => {
@@ -26,7 +26,7 @@ const Kpis = () => {
             data-aos-delay="600"
             data-aos-duration="600"
           >
-            Repere esentiale care arata amploarea activitatii noastre
+            Repere esențiale care arată amploarea activității noastre
           </h1>
         </div>
         <div className="flex flex-wrap -m-4 text-center">
@@ -82,14 +82,9 @@ const Kpis = () => {
                 <circle cx="33" cy="34" r="1.5" fill="#2FABB7" />
               </svg>
               <h2 className="title-font font-medium text-3xl text-gray-900">
-                <CountUp
-                  end={data.years}
-                  duration={2.75}
-                  suffix="+"
-                  enableScrollSpy
-                />
+                <CountUp end={data.years} duration={2.75} enableScrollSpy />
               </h2>
-              <p className="leading-relaxed">ANI PE PIATA</p>
+              <p className="leading-relaxed">ANI PE PIAȚĂ</p>
             </div>
           </div>
           <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -171,7 +166,7 @@ const Kpis = () => {
                   enableScrollSpy
                 />
               </h2>
-              <p className="leading-relaxed">MASINI IN FLOTA</p>
+              <p className="leading-relaxed">MAȘINI ÎN FLOTĂ</p>
             </div>
           </div>
           <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -231,7 +226,7 @@ const Kpis = () => {
                   enableScrollSpy
                 />
               </h2>
-              <p className="leading-relaxed">ANGAJATI</p>
+              <p className="leading-relaxed">ANGAJAȚI</p>
             </div>
           </div>
           <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -280,7 +275,7 @@ const Kpis = () => {
                   enableScrollSpy
                 />
               </h2>
-              <p className="leading-relaxed">CLIENTI</p>
+              <p className="leading-relaxed">CLIENȚI</p>
             </div>
           </div>
         </div>

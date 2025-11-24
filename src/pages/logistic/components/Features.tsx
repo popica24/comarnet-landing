@@ -11,39 +11,39 @@ import {
 const features = [
   {
     icon: Truck,
-    title: "Livrare Rapida",
+    title: "Livrare Rapidă",
     description:
-      "Transport eficient si rute optimizate pentru ca produsele tale sa ajunga la timp, de fiecare data.",
+      "Transport eficient și rute optimizate pentru ca produsele tale să ajungă la timp, de fiecare dată.",
   },
   {
     icon: ShieldCheck,
-    title: "Siguranta Garantata",
+    title: "Siguranță Garantată",
     description:
-      "Manipulare responsabila si sisteme sigure pentru protejarea marfurilor pe tot parcursul livrarii.",
+      "Manipulare responsabilă și sisteme sigure pentru protejarea mărfurilor pe tot parcursul livrării.",
   },
   {
     icon: Network,
-    title: "Acoperire Extinsa",
+    title: "Acoperire Extinsă",
     description:
-      "Rețea operationala care iti permite sa livrezi rapid oriunde ai nevoie.",
+      "Rețea operațională care îți permite să livrezi rapid oriunde ai nevoie.",
   },
   {
     icon: LineChart,
     title: "Tracking & Analize",
     description:
-      "Monitorizeaza in timp real si obtine date esentiale pentru optimizarea distributiei.",
+      "Monitorizează în timp real și obține date esențiale pentru optimizarea distribuției.",
   },
   {
     icon: Timer,
-    title: "Eficienta Operationala",
+    title: "Eficiență Operațională",
     description:
-      "Procese automatizate care reduc timpii morti si cresc productivitatea.",
+      "Procese automatizate care reduc timpii morți și cresc productivitatea.",
   },
   {
     icon: BadgeCheck,
     title: "Servicii Profesionale",
     description:
-      "Standard ridicat de calitate, oferit de o echipa cu experienta in logistica si distributie.",
+      "Standard ridicat de calitate, oferit de o echipă cu experiență în logistică și distribuție.",
   },
 ];
 
@@ -53,11 +53,11 @@ const Features = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Tot ce ai nevoie pentru distributie
+            Tot ce ai nevoie pentru distribuție
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Solutii puternice create pentru a-ti duce produsele mai rapid si mai
-            eficient acolo unde conteaza
+            Soluții puternice create pentru a-ți duce produsele mai rapid și mai
+            eficient acolo unde contează
           </p>
         </div>
 

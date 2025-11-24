@@ -10,7 +10,7 @@ const Navigation = () => {
   const menuItems = [
     { text: "Acasă", link: "/", comingSoon: false },
     { text: "Servicii", link: "/servicii", comingSoon: false },
-    { text: "Pall-Ex", link: "/pall-ex", comingSoon: false },
+    { text: "Pall-Ex", link: "/pallex", comingSoon: false },
     { text: "Aria1", link: "#", comingSoon: true },
     { text: "Comar Net Shop", link: "#", comingSoon: true },
   ];
@@ -158,7 +158,7 @@ const Navigation = () => {
               size="lg"
               className="hidden md:flex gap-2 rounded-full"
             >
-              Cere ofertă
+              Cere o ofertă
               <ArrowUpRight className="w-4 h-4" />
             </Button>
 
@@ -215,7 +215,7 @@ const Navigation = () => {
                 size="lg"
                 className="gap-2 rounded-full mt-2 w-full md:hidden"
               >
-                Cere ofertă
+                Cere o ofertă
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
 

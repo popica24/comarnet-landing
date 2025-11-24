@@ -16,7 +16,7 @@ const Services = () => {
           </div>
           <div className="relative z-10 flex items-center justify-end h-full px-8 md:px-16 lg:px-24">
             <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-all duration-300 ease-out group-hover:underline group-hover:-translate-y-2">
-              Logistica
+              Logistică
             </h1>
           </div>
         </section>
@@ -31,7 +31,7 @@ const Services = () => {
           </div>
           <div className="relative z-10 flex items-center justify-start h-full px-8 md:px-16 lg:px-24">
             <h2 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-2xl transition-all duration-300 ease-out group-hover:underline group-hover:-translate-y-2">
-              Distributie
+              Distribuție
             </h2>
           </div>
         </section>

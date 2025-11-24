@@ -33,180 +33,193 @@ const Footer = () => {
               </a>
               <div className="mt-4 lg:max-w-sm">
                 <p className="text-sm text-white">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam.
+                  Cu aproape două decenii de experiență în distribuția de
+                  produse alimentare și non-alimentare dedicate profesioniștilor
+                  din industrie.
                 </p>
                 <p className="mt-4 text-sm text-white">
-                  Eaque ipsa quae ab illo inventore veritatis et quasi
-                  architecto beatae vitae dicta sunt explicabo.
+                  Livrări prompte, stocuri consistente și suport dedicat pentru
+                  succesul afacerii dumneavoastră
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
               <div>
                 <p className="font-semibold tracking-wide text-white">
-                  Category
+                  Companie
                 </p>
                 <ul className="mt-2 space-y-2">
                   <li>
                     <a
-                      href="/"
+                      href="/despre"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      News
+                      Despre Noi
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/echipa"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      World
+                      Echipa Noastră
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/parteneri"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      Games
+                      Parteneri
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/cariere"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      References
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-semibold tracking-wide text-white">Cherry</p>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Web
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      eCommerce
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Business
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Entertainment
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Portfolio
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-semibold tracking-wide text-white">Apples</p>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Media
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Brochure
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Nonprofit
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Educational
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Projects
+                      Cariere
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <p className="font-semibold tracking-wide text-white">
-                  Business
+                  Produse & Servicii
                 </p>
                 <ul className="mt-2 space-y-2">
                   <li>
                     <a
-                      href="/"
+                      href="/catalog"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      Infopreneur
+                      Catalog Produse
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/categorii"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      Personal
+                      Categorii
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/livrare"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      Wiki
+                      Condiții Livrare
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/horeca"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
-                      Forum
+                      Soluții HoReCa
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/certificari"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Certificări
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold tracking-wide text-white">
+                  Informații Utile
+                </p>
+                <ul className="mt-2 space-y-2">
+                  <li>
+                    <a
+                      href="/cum-comandati"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Cum Comandați
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/plata"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Metode de Plată
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/returnare"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Politica de Returnare
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/faq"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Întrebări Frecvente
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contact"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold tracking-wide text-white">Legal</p>
+                <ul className="mt-2 space-y-2">
+                  <li>
+                    <a
+                      href="/termeni"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Termeni și Condiții
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/confidentialitate"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Politica de Confidențialitate
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/cookies"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Politica Cookies
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://ec.europa.eu/consumers/odr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Soluționare Dispute
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/anpc"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      ANPC
                     </a>
                   </li>
                 </ul>
@@ -215,19 +228,26 @@ const Footer = () => {
           </div>
           <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
             <p className="text-sm text-white">
-              © Copyright 2020 Lorem Inc. All rights reserved.
+              © {new Date().getFullYear()} Comar Net. Toate drepturile sunt
+              rezervate.
             </p>
             <div className="flex items-center mt-4 space-x-4 sm:mt-0">
               <a
-                href="/"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="transition-colors duration-300 text-gray-200 hover:text-white"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
-                  <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
+                  <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
                 </svg>
               </a>
               <a
-                href="/"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="transition-colors duration-300 text-gray-200 hover:text-white"
               >
                 <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
@@ -236,20 +256,28 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="/"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="transition-colors duration-300 text-gray-200 hover:text-white"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
-                  <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <span className="flex items-center justify-center">
-        Made by{" "}
-        <a href="" className="text-[#07C] mx-1">
+      <span className="flex items-center justify-center py-2">
+        Made By{" "}
+        <a
+          href="https://bowlingpin.ro"
+          className="text-[#07C] mx-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           #BowlingPin
         </a>
       </span>

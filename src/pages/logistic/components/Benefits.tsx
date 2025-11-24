@@ -3,12 +3,11 @@ import map from "@/assets/harta-romania.png";
 import { CheckCircle2 } from "lucide-react";
 
 const benefits = [
-  "Livrare rapidă și predictibilă pentru orice volum",
-  "Reducerea semnificativă a costurilor logistice",
-  "Scalare ușoară în funcție de cerere și sezonalitate",
-  "Suport dedicat și asistență operațională",
-  "Integrare cu platformele tale de vânzare",
-  "Acces la tracking în timp real, de oriunde",
+  "Livrare rapidă pentru orice tip de marfă",
+  "Suport dedicat și asistență profesională",
+  "Experiență de peste 17 ani în domeniu",
+  "Flexibilitate",
+  "Siguranță",
 ];
 
 const Benefits = () => {
@@ -20,11 +19,6 @@ const Benefits = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               De ce firmele ne aleg
             </h2>
-            <p className="text-xl text-white mb-8 leading-relaxed">
-              Mii de afaceri își livrează produsele mai rapid, mai sigur și mai
-              eficient datorită serviciilor noastre de distribuție.
-            </p>
-
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <div

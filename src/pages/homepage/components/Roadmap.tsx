@@ -78,7 +78,7 @@ type RoadmapProps = {
 
 const Roadmap: React.FC<RoadmapProps> = ({
   data = roadmapData,
-  title = "Principalele etape si realizari care ne-au consolidat poziția pe piata",
+  title = "Principalele etape și realizări care ne-au consolidat poziția pe piață",
   subtitle = "PARCURSUL NOSTRU",
 }) => {
   return (

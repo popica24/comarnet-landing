@@ -2,7 +2,6 @@ import Benefits from "./components/Benefits";
 import CTA from "./components/CTA";
 import Features from "./components/Features";
 import Hero from "./components/Hero";
-import Testimonials from "./components/Testimonials";
 
 const Distribution = () => {
   return (
@@ -10,7 +9,6 @@ const Distribution = () => {
       <Hero />
       <Features />
       <Benefits />
-      <Testimonials />
       <CTA />
     </div>
   );
