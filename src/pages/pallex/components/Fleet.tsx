@@ -21,28 +21,12 @@ const Fleet = () => {
         <div className="w-12 md:w-16 h-1 bg-primary mb-4 md:mb-6"></div>
 
         <p className="text-sm md:text-base text-foreground/80 mb-4 md:mb-6 leading-relaxed">
-          Comar Net asigură eficiența serviciilor printr-o flotă modernă,
-          adaptată proiectelor industriale, telecom și infrastructură
-          energetică.
+          Portofoliul de servicii oferit de Comar Net este asigurat prin flota
+          proprie și cu ajutorul partenerilor din întreaga țară.
         </p>
-
-        <p className="text-sm md:text-base text-foreground/80 mb-6 md:mb-8 leading-relaxed">
-          Vehiculele sunt echipate pentru transportul în siguranță al
-          echipamentelor, materialelor și instrumentelor folosite în lucrările
-          noastre. Indiferent de locație, echipele noastre se pot deplasa rapid
-          și eficient.
-        </p>
-
-        <div className="mb-6 md:mb-8">
-          <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
-            Toate vehiculele sunt dotate cu sisteme GPS, întreținute periodic și
-            beneficiază de asigurările necesare pentru protecția mărfurilor și a
-            echipamentelor transportate.
-          </p>
-        </div>
 
         <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-          <div className="bg-primary rounded-full p-3 md:p-4 flex-shrink-0">
+          <div className="bg-primary rounded-full p-3 md:p-4 shrink-0">
             <Truck className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
           </div>
           <div className="flex-1">
@@ -55,7 +39,7 @@ const Fleet = () => {
             <ul className="space-y-2">
               {fleetDetails.map((detail, index) => (
                 <li key={index} className="flex items-start gap-2 md:gap-3">
-                  <span className="text-primary mt-1 flex-shrink-0 text-sm md:text-base">
+                  <span className="text-primary mt-1 shrink-0 text-sm md:text-base">
                     ●
                   </span>
                   <span className="text-sm md:text-base text-foreground/80">

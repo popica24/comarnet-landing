@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import heroImage from "@/assets/hero-section-header.avif";
+import heroImage from "@/assets/hero.avif";
 import {
   Carousel,
   CarouselContent,

@@ -34,7 +34,7 @@ const Homepage = () => {
     description:
       "Comar Net - Lider în distribuția de produse alimentare și non-alimentare pentru profesioniști. Peste 18 ani de experiență, livrări prompte și stocuri consistente.",
     keywords:
-      "distribuție alimente, produse alimentare, HoReCa, distribuitor Romania, produse non-alimentare",
+      "distributie alimente, pallex, transport marfa, magazin online, depozitare",
     schema,
   });
   return (

@@ -17,7 +17,7 @@ export const useSEO = ({
   title,
   description,
   keywords = "",
-  ogImage = "/og-image.jpg",
+  ogImage = "logo.png",
   canonical,
   ogType = "website",
   publishedTime,

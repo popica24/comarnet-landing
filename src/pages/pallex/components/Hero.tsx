@@ -16,13 +16,12 @@ const Hero = () => {
       <div className="bg-background p-6 md:p-8 lg:p-12 flex flex-col justify-center">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6">
           COMAR NET <br /> Peste două decenii de experiență în distribuția de
-          produse alimentare de calitate superioară pentru profesioniști din
-          industrie.
+          produse alimentare pentru profesioniști din industrie.
         </h1>
         <p className="text-sm md:text-base text-foreground/80 mb-6 md:mb-8 leading-relaxed">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          earum distinctio quis soluta labore consequatur iusto, vero maxime
-          impedit harum id iste error nemo, est blanditiis quam tenetur. Nisi?
+          Partener afiliat Pall-Ex România din 2025, oferă servicii de preluare
+          și distribuire a mârfurilor paletizate din județul Argeș către orice
+          destinație din țară.
         </p>
       </div>
     </section>

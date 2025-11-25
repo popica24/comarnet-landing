@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Phone, Mail } from "lucide-react";
 import pallexImage from "@/assets/Pall-Ex-Group-Logo.webp";
 
@@ -42,25 +41,7 @@ const AboutPallex = () => {
           consultați următoarele documente
         </p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12">
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base px-4 md:px-6">
-            SCURTĂ DESCRIERE
-          </Button>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base px-4 md:px-6">
-            PROFILUL COMPANIEI
-          </Button>
-        </div>
-
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          <div className="bg-primary text-primary-foreground p-6 md:p-8 rounded-lg">
-            <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-              Detalii și comenzi
-            </h3>
-            <p className="text-sm md:text-base opacity-90">
-              Pentru detalii și comenzi, colegii noștri vă stau la dispoziție:
-            </p>
-          </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <div className="text-center p-4 bg-gray-light rounded-lg">
               <div className="flex justify-center mb-2 md:mb-3">
@@ -70,7 +51,6 @@ const AboutPallex = () => {
                 +40.7XX.XXX.XXX
               </p>
             </div>
-
             <div className="text-center p-4 bg-gray-light rounded-lg">
               <div className="flex justify-center mb-2 md:mb-3">
                 <Phone className="w-6 h-6 md:w-8 md:h-8 text-primary" />
@@ -79,7 +59,6 @@ const AboutPallex = () => {
                 +40.7XX.XXX.XXX
               </p>
             </div>
-
             <div className="text-center p-4 bg-gray-light rounded-lg sm:col-span-3 md:col-span-1">
               <div className="flex justify-center mb-2 md:mb-3">
                 <Mail className="w-6 h-6 md:w-8 md:h-8 text-primary" />

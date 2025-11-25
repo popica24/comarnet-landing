@@ -1,9 +1,17 @@
-import bgLogistic from "@/assets/logitsics.jpg";
-import bgDistribution from "@/assets/distribution.jpg";
-import bgStoring from "@/assets/storing.jpg";
+import bgLogistic from "@/assets/logistics.jpg";
+import bgDistribution from "@/assets/distribution.avif";
+import bgStoring from "@/assets/storing.avif";
 import { Link } from "react-router";
+import { useSEO } from "@/hooks/useSEO";
 
 const Services = () => {
+  useSEO({
+    title: "Servicii de Distribuție, Logistică și Depozitare",
+    description:
+      "Descoperă gama completă de servicii Comar Net: distribuție națională, logistică eficientă, depozitare profesională și soluții personalizate pentru afacerea ta.",
+    keywords:
+      "servicii distribuție, logistică România, depozitare produse, transport marfă",
+  });
   return (
     <main className="min-h-screen mt-22">
       <Link to={"/servicii/logistica"}>
