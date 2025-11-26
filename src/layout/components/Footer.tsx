@@ -83,53 +83,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div>
-                <p className="font-semibold tracking-wide text-white">
-                  Produse & Servicii
-                </p>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/catalog"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Catalog Produse
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/categorii"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Categorii
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/livrare"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Condiții Livrare
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/horeca"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Soluții HoReCa
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/certificari"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Certificări
-                    </a>
-                  </li>
-                </ul>
-              </div>
+
               <div>
                 <p className="font-semibold tracking-wide text-white">
                   Informații Utile
@@ -177,6 +131,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
+
               <div>
                 <p className="font-semibold tracking-wide text-white">Legal</p>
                 <ul className="mt-2 space-y-2">

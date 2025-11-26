@@ -42,7 +42,10 @@ const Benefits = () => {
 
           <div className="relative animate-fade-in">
             <div className="rounded-2xl bg-gradient-primary p-1 bg-white">
-              <img className="h-full w-full rounded-xl" src={map} />
+              <img
+                className="w-xl mx-auto rounded-2xl border shadow"
+                src={map}
+              />
             </div>
             <div className="absolute -bottom-6 -right-6 h-32 w-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
             <div

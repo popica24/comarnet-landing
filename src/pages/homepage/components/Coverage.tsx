@@ -24,7 +24,7 @@ const Coverage = () => {
         </div>
         <img
           src={map}
-          className="w-xl mx-auto"
+          className="w-xl mx-auto rounded-2xl border shadow"
           data-aos="fade-in"
           data-aos-delay="300"
           data-aos-duration="600"
