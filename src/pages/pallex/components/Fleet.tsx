@@ -54,7 +54,7 @@ const Fleet = () => {
 
       {/* Right side – Image */}
       <div
-        className="relative bg-cover bg-center flex items-center justify-center order-1 md:order-2 min-h-[300px] md:min-h-0 rounded-xl"
+        className="relative bg-cover bg-center flex items-end justify-end order-1 md:order-2 min-h-[300px] md:min-h-0 rounded-xl"
         style={{ backgroundImage: `url(${fleetImage})` }}
       >
         <div className="absolute inset-0 bg-black/50 rounded-xl"></div>

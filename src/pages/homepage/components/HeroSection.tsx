@@ -66,7 +66,12 @@ const HeroSection = () => {
                   <Button
                     variant="outlineLight"
                     size="lg"
-                    className="gap-2 rounded-full md:text-base"
+                    className="gap-2 rounded-full md:text-base mb-4"
+                    onClick={() => {
+                      document.getElementById("contact")?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    }}
                   >
                     Deveniți Partener
                     <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -103,6 +108,11 @@ const HeroSection = () => {
                   variant="outlineLight"
                   size="lg"
                   className="gap-2 rounded-full md:text-base mb-4"
+                  onClick={() => {
+                    document.getElementById("contact")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }}
                 >
                   Deveniți Partener
                   <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5" />

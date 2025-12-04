@@ -13,6 +13,7 @@ const Navigation = () => {
     { text: "Pall-Ex", link: "/pallex", comingSoon: false },
     { text: "Aria1", link: "#", comingSoon: true },
     { text: "Comar Net Shop", link: "#", comingSoon: true },
+    { text: "Contact", link: "/#contact" },
   ];
 
   const requestOffer = () => {

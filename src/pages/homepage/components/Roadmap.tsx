@@ -1,59 +1,59 @@
 export const roadmapData: RoadmapItem[] = [
   {
     id: 1,
-    category: "Fundație",
-    date: "Mar. 2015",
-    title: "Înființarea companiei de distribuție",
+    category: "Înființare",
+    date: "2008",
+    title: "Înființarea companiei",
     description:
-      "Compania a fost înființată cu scopul de a oferi servicii de distribuție de calitate. Am început cu o echipă mică și o viziune clară pentru viitor.",
+      "Compania a luat startul în 2008 fiind o societate cu capital exclusiv privat, românesc, cu 2 asociați și are ca principal obiect de activitate comercializarea în sistem de distribuție a produselor de larg consum.",
   },
   {
     id: 2,
-    category: "Dezvoltare",
-    date: "Mar. 2017",
-    title: "Extinderea rețelei de distribuție",
+    category: "Creștere",
+    date: "2016",
+    title: "Creșterea veniturilor",
     description:
-      "Am extins rețeaua de distribuție la nivel național. Am deschis noi depozite și am îmbunătățit procesele logistice pentru o eficiență mai mare.",
+      "Creșterea veniturilor realizate de societatea noastră, de la un an la altul, din vânzarea produselor și serviciilor noastre, se explică în mare parte prin renegocierea contractelor cu furnizorii noștri principali și îmbunătățirea permanentă a portofoliului de clienți.",
   },
   {
     id: 3,
-    category: "Creștere",
-    date: "Mar. 2019",
-    title: "Diversificarea portofoliului de produse",
+    category: "Dezvoltare",
+    date: "2019",
+    title: "Investiție strategică în depozitare",
     description:
-      "Am adăugat noi categorii de produse în portofoliu. Colaborările cu furnizori de încredere ne-au permis să oferim o gamă mai largă de servicii clienților.",
+      "Firma a realizat o investiție strategică prin achiziția unui nou spațiu de depozitare.",
   },
   {
     id: 4,
-    category: "Modernizare",
-    date: "Mar. 2021",
-    title: "Implementarea sistemelor digitale",
+    category: "Expansiune",
+    date: "2021",
+    title: "Preluarea unei companii complementare",
     description:
-      "Am investit în tehnologie modernă pentru optimizarea proceselor. Sistemele digitale au îmbunătățit viteza de livrare și transparența operațiunilor.",
+      "Preluarea unei companii complementare a reprezentat un pas esențial în extinderea activității, generând sinergii operaționale și consolidând poziția pe piață.",
   },
   {
     id: 5,
-    category: "Expansiune",
-    date: "Mar. 2022",
-    title: "Deschiderea de noi centre logistice",
+    category: "Modernizare",
+    date: "2024",
+    title: "Implementarea sistemului informatic nou",
     description:
-      "Am deschis centre logistice în zone strategice. Această expansiune ne-a permis să servim mai eficient clienții din toate regiunile țării.",
+      "Procesul de modernizare a fost realizat prin implementarea unui nou program informatic și de gestiune, care optimizează fluxurile interne, crește eficiența operațională și asigură o mai bună monitorizare a resurselor.",
   },
   {
     id: 6,
-    category: "Inovație",
-    date: "Mar. 2023",
-    title: "Lansarea serviciilor de livrare rapidă",
+    category: "Extindere",
+    date: "2024",
+    title: "Deschiderea punctului de lucru în Teleorman",
     description:
-      "Am introdus servicii de livrare în 24 de ore. Flota modernizată și procesele optimizate asigură livrări rapide și sigure pentru toți clienții.",
+      "Extinderea companiei s-a materializat prin deschiderea unui nou punct de lucru în județul Teleorman, consolidând astfel prezența regională și facilitând accesul la noi piețe.",
   },
   {
     id: 7,
-    category: "Sustenabilitate",
-    date: "Mar. 2024",
-    title: "Implementarea soluțiilor ecologice",
+    category: "Viitor",
+    date: "2025",
+    title: "Povestea continuă",
     description:
-      "Am adoptat practici sustenabile în operațiunile noastre. Vehicule ecologice și ambalaje reciclabile demonstrează angajamentul nostru pentru mediu.",
+      "Continuăm să ne dezvoltăm și să ne adaptăm la nevoile pieței, menținându-ne angajamentul față de clienți și parteneri.",
   },
 ];
 

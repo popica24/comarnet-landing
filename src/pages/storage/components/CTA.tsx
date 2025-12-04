@@ -17,7 +17,20 @@ const CTA = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" variant="secondary" className="shadow-lg group">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="shadow-lg group"
+              onClick={() => {
+                if (window.location.pathname === "/") {
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                } else {
+                  window.location.href = "/#contact";
+                }
+              }}
+            >
               Cere o ofertă
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>

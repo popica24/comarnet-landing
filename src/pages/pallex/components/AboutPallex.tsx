@@ -1,10 +1,9 @@
-import { Phone, Mail } from "lucide-react";
 import pallexImage from "@/assets/Pall-Ex-Group-Logo.webp";
 
 const AboutPallex = () => {
   return (
-    <section className="bg-background py-8 md:py-12 lg:py-16">
-      <div className="grid md:grid-cols-2 gap-0 mb-8 md:mb-12 lg:mb-16">
+    <section className="bg-background pt-8 md:pt-12 lg:pt-16">
+      <div className="grid md:grid-cols-2 gap-0">
         <div
           className="relative bg-contain bg-no-repeat bg-center flex items-center justify-center bg-black rounded-xl"
           style={{ backgroundImage: `url(${pallexImage})` }}
@@ -31,42 +30,6 @@ const AboutPallex = () => {
               Est și suntem bucuroși să putem contribui direct la un sistem de
               distribuție performant.
             </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4">
-        <p className="text-center text-sm md:text-base text-foreground mb-6 md:mb-8">
-          Pentru mai multe informații despre rețeaua PALL-EX, vă rugăm să
-          consultați următoarele documente
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-            <div className="text-center p-4 bg-gray-light rounded-lg">
-              <div className="flex justify-center mb-2 md:mb-3">
-                <Phone className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-              </div>
-              <p className="font-bold text-foreground text-xs md:text-sm break-all">
-                +40.7XX.XXX.XXX
-              </p>
-            </div>
-            <div className="text-center p-4 bg-gray-light rounded-lg">
-              <div className="flex justify-center mb-2 md:mb-3">
-                <Phone className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-              </div>
-              <p className="font-bold text-foreground text-xs md:text-sm break-all">
-                +40.7XX.XXX.XXX
-              </p>
-            </div>
-            <div className="text-center p-4 bg-gray-light rounded-lg sm:col-span-3 md:col-span-1">
-              <div className="flex justify-center mb-2 md:mb-3">
-                <Mail className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-              </div>
-              <p className="font-bold text-foreground text-xs md:text-sm break-all">
-                pallex@comarnet.ro
-              </p>
-            </div>
           </div>
         </div>
       </div>
