@@ -4,6 +4,7 @@ import { Phone, ArrowUpRight, Menu, X, Clock } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { company } from "@/config/company";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,9 +12,10 @@ const Navigation = () => {
     { text: "Acasă", link: "/", comingSoon: false },
     { text: "Servicii", link: "/servicii", comingSoon: false },
     { text: "Pall-Ex", link: "/pallex", comingSoon: false },
+    { text: "Sustenabilitate", link: "/sustenabilitate", comingSoon: false },
     { text: "Aria1", link: "#", comingSoon: true },
     { text: "Comar Net Shop", link: "#", comingSoon: true },
-    { text: "Contact", link: "/#contact" },
+    { text: "Contact", link: "/contact" },
   ];
 
   const requestOffer = () => {
@@ -67,7 +69,7 @@ const Navigation = () => {
             const subject = `Cerere Ofertă - ${service}`;
             const body =
               "Bună ziua,\n\nDoresc să solicit o ofertă pentru serviciile dumneavoastră.\n\nVă mulțumesc!";
-            const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(
+            const mailtoLink = `mailto:${company.email}?subject=${encodeURIComponent(
               subject
             )}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
@@ -109,7 +111,12 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link className="flex items-center gap-2" to="/">
-            <img src={logo} width={85} alt="Logo" />
+            <img
+              src={logo}
+              width={85}
+              height={85}
+              alt="Comar Net - distribuție, logistică și depozitare"
+            />
           </Link>
 
           {/* Desktop Menu Items */}
@@ -143,12 +150,15 @@ const Navigation = () => {
           <div className="flex items-center gap-2 md:gap-4">
             {/* Phone - Hidden on mobile */}
             <div className="hidden xl:flex items-center gap-2 text-foreground">
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5" aria-hidden="true" />
               <div className="flex flex-col">
                 <span className="text-xs">Sună Acum</span>
-                <span className="text-sm font-semibold">
-                  {import.meta.env.VITE_PHONE_NUMBER}
-                </span>
+                <a
+                  href={`tel:${company.phone}`}
+                  className="text-sm font-semibold hover:text-gold transition-colors duration-300"
+                >
+                  {import.meta.env.VITE_PHONE_NUMBER ?? company.phoneDisplay}
+                </a>
               </div>
             </div>
 
@@ -222,12 +232,15 @@ const Navigation = () => {
 
               {/* Mobile Phone */}
               <div className="xl:hidden flex items-center gap-2 text-foreground pt-2 border-t border-primary-foreground/10 mt-2">
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5" aria-hidden="true" />
                 <div className="flex flex-col">
                   <span className="text-xs">Sună Acum</span>
-                  <span className="text-sm font-semibold">
-                    {import.meta.env.VITE_PHONE_NUMBER}
-                  </span>
+                  <a
+                    href={`tel:${company.phone}`}
+                    className="text-sm font-semibold hover:text-gold transition-colors duration-300"
+                  >
+                    {import.meta.env.VITE_PHONE_NUMBER ?? company.phoneDisplay}
+                  </a>
                 </div>
               </div>
             </div>

@@ -25,7 +25,7 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Entry chain:** `src/main.tsx` → `RouterProvider` → `src/router.tsx` → `src/layout/Layout.tsx` (shell) → page.
 
-**Routing.** All routes live in `src/router.tsx` as children of the single `Layout` route. Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`. Adding a page means adding a folder under `src/pages/` and one entry here.
+**Routing.** All routes live in `src/router.tsx` as children of the single `Layout` route. Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`, `/sustenabilitate`, `/contact`, `/termeni`, `/confidentialitate`, `/cookies`, `/anpc`. A `*` catch-all and the layout's `errorElement` both render `NotFound`. Adding a page means adding a folder under `src/pages/`, one entry here, **and one `<url>` in `public/sitemap.xml`**.
 
 **Page structure convention.** Every page is `src/pages/<name>/` containing:
 - `<Name>.tsx` — thin composition root: calls `useSEO(...)` then renders section components in order.
@@ -36,7 +36,15 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Layout shell.** `Layout.tsx` renders fixed `Navigation`, a `framer-motion` `AnimatePresence` page transition keyed on `location.pathname`, then `Footer`. `AnimatedOutlet` freezes the outlet in `useState` so the exiting page keeps rendering its old content during the transition — don't replace it with a plain `<Outlet />`. `ScrollToTop` scrolls to top on navigation with a 500ms delay matched to the exit animation duration; the two must stay in sync.
 
-**SEO.** `src/hooks/useSEO.ts` imperatively writes `document.title`, meta tags (OG/Twitter/robots/geo), canonical link, and optional JSON-LD into `<head>` on mount. There is no react-helmet. Every page component should call it. Note this is client-side only — the served `index.html` has no per-route meta.
+**Company data.** `src/config/company.ts` is the single source of truth for address, phone, email, hours, geo coordinates, legal identifiers (CUI, Reg. Com.) and Google Maps URLs. Never hardcode these — schemas, footer, nav, contact page and legal pages all read from it.
+
+**SEO.** `src/hooks/useSEO.ts` imperatively writes `document.title`, meta tags (OG/Twitter/robots/geo), the canonical link and JSON-LD into `<head>` on mount, cleaning up on unmount. There is no react-helmet. Every page component must call it, passing `canonical` as a site-relative path — the hook derives the URL from `SITE_URL` and strips query/hash so one page never yields several canonical URLs. It injects `Organization` + `WebSite` + `LocalBusiness` on every indexable page; pass page-specific nodes via `schema`. Set `noIndex` for error pages (it also suppresses the site-wide nodes).
+
+Schema builders live in `src/lib/schema.ts` (`pageBreadcrumbs`, `serviceSchema`, `faqSchema`, `webPageSchema`, …). Define the `schema` array at **module scope**, not inline in the component — `useSEO` depends on it by reference and an inline literal re-runs the effect every render.
+
+Breadcrumbs: render `<Breadcrumbs items={...} />` and pass the *same* array to `pageBreadcrumbs(...)`, so markup and structured data cannot drift. "Acasă" is implicit in both — don't include it.
+
+Caveat: this is all client-side. Google renders JS and sees it, but social crawlers (Facebook, LinkedIn, WhatsApp) do not — they read the static fallback tags in `index.html`, which must stay accurate. Per-route share previews need build-time prerendering, which is not set up.
 
 **Styling.** Tailwind v4 via `@tailwindcss/vite`, but `src/index.css` pulls in a v3-shaped config with `@config "../tailwind.config.ts"`. Consequence: theme extensions (colors, keyframes, plugins) go in `tailwind.config.ts`; the HSL CSS variables they reference are defined in `src/index.css` under `@layer base`. Semantic tokens only — use `bg-primary`, `text-foreground`, `border-border`, `text-gold`, never raw hex. Brand color is teal `#2FABB7`; `--gold` is aliased to the same teal (historical name, kept for the `gold` Button variant). Dark mode tokens exist (`darkMode: "class"`) but nothing toggles `.dark` today.
 
@@ -50,4 +58,6 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Env vars.** `VITE_APPS_SCRIPT` (contact form endpoint) and `VITE_PHONE_NUMBER` (displayed in nav). `.env` is gitignored; missing values fail silently at runtime.
 
-**Imports.** `@/` → `src/` (aliased in both `vite.config.ts` and `tsconfig.app.json` — update both if changed). Import from `react-router`, not `react-router-dom`. Images are imported as modules from `src/assets/`; only `logo.png` lives in `public/`.
+**Imports.** `@/` → `src/` (aliased in both `vite.config.ts` and `tsconfig.app.json` — update both if changed). Import from `react-router`, not `react-router-dom`. Images are imported as modules from `src/assets/`; `public/` holds only the files that need stable URLs: `logo.png`, `og-image.jpg` (1200×630), `robots.txt`, `sitemap.xml`.
+
+**Images.** Every `<img>` needs a descriptive Romanian `alt`. Below-the-fold images get `loading="lazy" decoding="async"`; the homepage hero is the LCP element and uses `fetchPriority="high"` instead.

@@ -1,5 +1,10 @@
 import logo from "@/assets/logo.png";
 import { Link } from "react-router";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { company, formattedAddress } from "@/config/company";
+
+const linkClass =
+  "transition-colors duration-300 text-gray-200 hover:text-white";
 
 const Footer = () => {
   return (
@@ -21,17 +26,22 @@ const Footer = () => {
         <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <div className="md:max-w-md lg:col-span-2">
-              <a
-                href="/"
-                aria-label="Go home"
-                title="Company"
+              <Link
+                to="/"
+                aria-label="Comar Net - pagina principală"
                 className="inline-flex items-center bg-white rounded-md shadow"
               >
-                <img src={logo} alt="" width={60} />
+                <img
+                  src={logo}
+                  alt="Comar Net"
+                  width={60}
+                  height={60}
+                  loading="lazy"
+                />
                 <span className="ml-2 text-xl font-bold tracking-wide text-primary uppercase mr-2">
                   EXCELENȚĂ ÎN DISTRIBUȚIE
                 </span>
-              </a>
+              </Link>
               <div className="mt-4 lg:max-w-sm">
                 <p className="text-sm text-white">
                   Cu aproape două decenii de experiență în distribuția de
@@ -43,52 +53,63 @@ const Footer = () => {
                   succesul afacerii dumneavoastră
                 </p>
               </div>
+
+              <address className="mt-6 not-italic space-y-2 text-sm text-gray-200">
+                <p className="flex items-start gap-2">
+                  <MapPin
+                    className="h-4 w-4 mt-0.5 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>{formattedAddress}</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <a href={`tel:${company.phone}`} className={linkClass}>
+                    {company.phoneDisplay}
+                  </a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <a href={`mailto:${company.email}`} className={linkClass}>
+                    {company.email}
+                  </a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span>{company.openingHoursDisplay}</span>
+                </p>
+              </address>
             </div>
             <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
               <div>
                 <p className="font-semibold tracking-wide text-white">
-                  Companie
+                  Servicii
                 </p>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <a
-                      href="/despre"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Despre Noi
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/echipa"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Echipa Noastră
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/parteneri"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Parteneri
-                    </a>
-                  </li>
-                  <li>
-                    <Link
-                      to="/sustenabilitate"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Sustenabilitate
+                    <Link to="/servicii" className={linkClass}>
+                      Toate Serviciile
                     </Link>
                   </li>
                   <li>
-                    <a
-                      href="/cariere"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Cariere
-                    </a>
+                    <Link to="/servicii/distributie" className={linkClass}>
+                      Distribuție
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/servicii/logistica" className={linkClass}>
+                      Logistică
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/servicii/depozitare" className={linkClass}>
+                      Depozitare
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/pallex" className={linkClass}>
+                      Pall-Ex
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -99,44 +120,24 @@ const Footer = () => {
                 </p>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <a
-                      href="/cum-comandati"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Cum Comandați
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/plata"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Metode de Plată
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/returnare"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      Politica de Returnare
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/faq"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
+                    <Link to="/#intrebari-frecvente" className={linkClass}>
                       Întrebări Frecvente
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/contact"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
+                    <Link to="/sustenabilitate" className={linkClass}>
+                      Sustenabilitate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className={linkClass}>
                       Contact
-                    </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/#locatie" className={linkClass}>
+                      Unde Ne Găsiți
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -145,45 +146,33 @@ const Footer = () => {
                 <p className="font-semibold tracking-wide text-white">Legal</p>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <a
-                      href="/termeni"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
+                    <Link to="/termeni" className={linkClass}>
                       Termeni și Condiții
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/confidentialitate"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
+                    <Link to="/confidentialitate" className={linkClass}>
                       Politica de Confidențialitate
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/cookies"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
+                    <Link to="/cookies" className={linkClass}>
                       Politica Cookies
-                    </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/anpc" className={linkClass}>
+                      ANPC
+                    </Link>
                   </li>
                   <li>
                     <a
                       href="https://ec.europa.eu/consumers/odr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                      className={linkClass}
                     >
-                      Soluționare Dispute
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/anpc"
-                      className="transition-colors duration-300 text-gray-200 hover:text-white"
-                    >
-                      ANPC
+                      Soluționare Dispute (SOL)
                     </a>
                   </li>
                 </ul>
@@ -191,43 +180,31 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-            <p className="text-sm text-white">
-              © {new Date().getFullYear()} Comar Net. Toate drepturile sunt
-              rezervate.
-            </p>
+            <div className="text-sm text-white">
+              <p>
+                © {new Date().getFullYear()} {company.name}. Toate drepturile
+                sunt rezervate.
+              </p>
+              <p className="mt-1 text-gray-200">
+                {company.legalName} · CUI {company.cui} · Reg. Com.{" "}
+                {company.regCom}
+              </p>
+            </div>
             <div className="flex items-center mt-4 space-x-4 sm:mt-0">
               <a
-                href="https://facebook.com"
+                href={company.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="transition-colors duration-300 text-gray-200 hover:text-white"
+                aria-label="Comar Net pe Facebook"
+                className={linkClass}
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5"
+                  aria-hidden="true"
+                >
                   <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
-                </svg>
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="transition-colors duration-300 text-gray-200 hover:text-white"
-              >
-                <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
-                  <circle cx="15" cy="15" r="4" />
-                  <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
-                </svg>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="transition-colors duration-300 text-gray-200 hover:text-white"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
             </div>

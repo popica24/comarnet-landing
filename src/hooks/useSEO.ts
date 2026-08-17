@@ -1,38 +1,76 @@
 // hooks/useSEO.ts
-import { useEffect } from "react";
+import { useEffect, useId } from "react";
+import { SITE_URL, absoluteUrl } from "@/config/company";
+import {
+  localBusinessSchema,
+  organizationSchema,
+  websiteSchema,
+  type Schema,
+} from "@/lib/schema";
 
 interface SEOProps {
   title: string;
   description: string;
   keywords?: string;
+  /** Absolute URL, or a site-relative path which gets absolutised. */
   ogImage?: string;
+  /** Site-relative path. Defaults to the current pathname. */
   canonical?: string;
   ogType?: string;
   publishedTime?: string;
   modifiedTime?: string;
-  schema?: Record<string, any>;
+  /** Page-specific JSON-LD, appended after the site-wide nodes. */
+  schema?: Schema | Schema[];
+  /** Keeps the page out of the index — used by the 404. */
+  noIndex?: boolean;
 }
+
+const DEFAULT_OG_IMAGE = absoluteUrl("/og-image.jpg");
+
+/**
+ * Marks the nodes this hook owns. The value is per component instance, because
+ * `AnimatePresence` keeps the exiting page mounted for 500ms after the incoming
+ * page has already injected its own nodes — a shared marker would let the old
+ * page's cleanup delete the new page's structured data.
+ */
+const MANAGED_ATTR = "data-seo-schema";
 
 export const useSEO = ({
   title,
   description,
   keywords = "",
-  ogImage = "logo.png",
+  ogImage = DEFAULT_OG_IMAGE,
   canonical,
   ogType = "website",
   publishedTime,
   modifiedTime,
   schema,
+  noIndex = false,
 }: SEOProps): void => {
+  const instanceId = useId();
+
   useEffect(() => {
     const siteName = "Comar Net";
     const fullTitle = `${title} | ${siteName}`;
-    const currentUrl = canonical || window.location.href;
 
-    // Set title
+    // Canonicals must be one stable URL per page: no query string, no hash,
+    // no trailing slash. `location.href` carries all three and would split
+    // ranking signals across near-duplicate URLs.
+    const path = canonical ?? window.location.pathname;
+    const normalisedPath =
+      path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+    const currentUrl = normalisedPath.startsWith("http")
+      ? normalisedPath
+      : `${SITE_URL}${normalisedPath}`;
+
+    // Relative image paths are silently dropped by social crawlers.
+    const absoluteImage = ogImage.startsWith("http")
+      ? ogImage
+      : absoluteUrl(ogImage);
+
     document.title = fullTitle;
+    document.documentElement.lang = "ro";
 
-    // Helper function to set or update meta tags
     const setMetaTag = (
       property: string,
       content: string,
@@ -51,7 +89,6 @@ export const useSEO = ({
       element.setAttribute("content", content);
     };
 
-    // Set canonical link
     let canonicalLink = document.querySelector(
       'link[rel="canonical"]'
     ) as HTMLLinkElement | null;
@@ -66,15 +103,16 @@ export const useSEO = ({
     setMetaTag("description", description);
     if (keywords) setMetaTag("keywords", keywords);
     setMetaTag("language", "Romanian");
-    setMetaTag("geo.region", "RO");
-    setMetaTag("geo.placename", "România");
+    setMetaTag("geo.region", "RO-AG");
+    setMetaTag("geo.placename", "Pitești");
 
     // Open Graph
     setMetaTag("og:type", ogType, true);
     setMetaTag("og:url", currentUrl, true);
     setMetaTag("og:title", fullTitle, true);
     setMetaTag("og:description", description, true);
-    setMetaTag("og:image", ogImage, true);
+    setMetaTag("og:image", absoluteImage, true);
+    setMetaTag("og:image:alt", title, true);
     setMetaTag("og:site_name", siteName, true);
     setMetaTag("og:locale", "ro_RO", true);
 
@@ -88,43 +126,46 @@ export const useSEO = ({
     setMetaTag("twitter:url", currentUrl);
     setMetaTag("twitter:title", fullTitle);
     setMetaTag("twitter:description", description);
-    setMetaTag("twitter:image", ogImage);
+    setMetaTag("twitter:image", absoluteImage);
+    setMetaTag("twitter:image:alt", title);
 
     // Robots
     setMetaTag(
       "robots",
-      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      noIndex
+        ? "noindex, follow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     );
-    setMetaTag("googlebot", "index, follow");
+    setMetaTag("googlebot", noIndex ? "noindex, follow" : "index, follow");
 
     // Language and content type
     setMetaTag("content-language", "ro");
 
-    // JSON-LD Schema
-    if (schema) {
-      let schemaScript = document.querySelector(
-        'script[type="application/ld+json"]'
-      ) as HTMLScriptElement | null;
-      if (!schemaScript) {
-        schemaScript = document.createElement("script");
-        schemaScript.setAttribute("type", "application/ld+json");
-        document.head.appendChild(schemaScript);
-      }
-      schemaScript.textContent = JSON.stringify(schema);
-    }
+    // JSON-LD. Site-wide identity first, then whatever the page adds.
+    // 404s are excluded so we never assert business data on an error page.
+    const pageSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+    const allSchemas: Schema[] = noIndex
+      ? pageSchemas
+      : [organizationSchema, websiteSchema, localBusinessSchema, ...pageSchemas];
 
-    // Cleanup function to remove schema on unmount
+    allSchemas.forEach((entry) => {
+      const script = document.createElement("script");
+      script.setAttribute("type", "application/ld+json");
+      script.setAttribute(MANAGED_ATTR, instanceId);
+      script.textContent = JSON.stringify(entry);
+      document.head.appendChild(script);
+    });
+
+    // Always clean up, and only this instance's nodes — the previous
+    // implementation ran only when a page happened to pass a schema, and
+    // grabbed the first ld+json on the page regardless of who owned it.
     return () => {
-      if (schema) {
-        const schemaScript = document.querySelector(
-          'script[type="application/ld+json"]'
-        );
-        if (schemaScript) {
-          schemaScript.remove();
-        }
-      }
+      document
+        .querySelectorAll(`script[${MANAGED_ATTR}="${instanceId}"]`)
+        .forEach((node) => node.remove());
     };
   }, [
+    instanceId,
     title,
     description,
     keywords,
@@ -134,5 +175,6 @@ export const useSEO = ({
     publishedTime,
     modifiedTime,
     schema,
+    noIndex,
   ]);
 };

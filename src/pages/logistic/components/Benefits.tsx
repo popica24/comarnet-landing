@@ -38,6 +38,9 @@ const Benefits = () => {
               <img
                 className="w-xl mx-auto rounded-2xl border shadow"
                 src={map}
+                alt="Harta României cu zonele acoperite de serviciile de logistică și transport Comar Net"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 h-32 w-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
