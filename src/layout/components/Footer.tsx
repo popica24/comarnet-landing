@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -72,6 +73,14 @@ const Footer = () => {
                     >
                       Parteneri
                     </a>
+                  </li>
+                  <li>
+                    <Link
+                      to="/sustenabilitate"
+                      className="transition-colors duration-300 text-gray-200 hover:text-white"
+                    >
+                      Sustenabilitate
+                    </Link>
                   </li>
                   <li>
                     <a

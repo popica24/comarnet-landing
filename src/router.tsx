@@ -6,6 +6,7 @@ import Distribution from "./pages/distribution";
 import Logistic from "./pages/logistic/";
 import Storage from "./pages/storage/";
 import PallEx from "./pages/pallex";
+import Sustainability from "./pages/sustainability";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/pallex",
         element: <PallEx />,
+      },
+      {
+        path: "/sustenabilitate",
+        element: <Sustainability />,
       },
     ],
   },
