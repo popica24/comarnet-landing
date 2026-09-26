@@ -21,7 +21,7 @@ There is no test setup. `npm run build` is the only real correctness gate — it
 
 ## Architecture
 
-React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mode, Tailwind CSS v4, deployed to Vercel.
+React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mode, Tailwind CSS v4. Hosted as static files on cPanel (LiteSpeed): the contents of `dist/` are uploaded to the site root — there is no Vercel/Node server, and `vercel.json`-style config has no effect.
 
 **Entry chain:** `src/main.tsx` → `RouterProvider` → `src/router.tsx` (`createBrowserRouter(routes)`) → `src/routes.tsx` → `src/layout/Layout.tsx` (shell) → page. `main.tsx` hydrates when `#root` already has prerendered markup and does a plain client render otherwise (dev).
 
@@ -40,7 +40,7 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 - `scripts/prerender.mjs` (after `vite build --ssr src/entry-server.tsx --outDir dist-ssr`) renders every sitemap page plus the 404 page with `renderToString` into `dist/<path>.html` with its own `<head>`, then writes `dist/sitemap.xml` and deletes `dist-ssr/`.
 - `useSEO` swaps all `[data-seo]` head elements on client-side navigation.
 
-Keep components render-safe in Node: browser APIs (`window`, `document`) only in effects and handlers. CommonJS deps that break in the SSR build go in `ssr.noExternal` in `vite.config.ts`. `Layout`'s `AnimatePresence` uses `initial={false}` so prerendered content is not rendered at `opacity: 0`. `vercel.json` uses `cleanUrls` (serves `servicii/distributie.html` at `/servicii/distributie`) with **no SPA rewrite**: unknown paths get `404.html` with a real 404 status, and `/index.php` (an old-site URL still in Google) 301s to `/`. `public/robots.txt` points to the sitemap.
+Keep components render-safe in Node: browser APIs (`window`, `document`) only in effects and handlers. CommonJS deps that break in the SSR build go in `ssr.noExternal` in `vite.config.ts`. `Layout`'s `AnimatePresence` uses `initial={false}` so prerendered content is not rendered at `opacity: 0`. `public/.htaccess` (copied into `dist/`) serves `servicii/distributie.html` at `/servicii/distributie`, 301s trailing slashes, `.html` URLs and `/index.php` (an old-site URL still in Google), and has **no SPA fallback**: unknown paths get `404.html` with a real 404 status. `DirectorySlash Off` is required because `/servicii` is both `servicii.html` and a folder. `public/robots.txt` points to the sitemap. When deploying, upload `dist/` including the dotfile `.htaccess` (cPanel File Manager hides dotfiles by default).
 
 **Styling.** Tailwind v4 via `@tailwindcss/vite`, but `src/index.css` pulls in a v3-shaped config with `@config "../tailwind.config.ts"`. Consequence: theme extensions (colors, keyframes, plugins) go in `tailwind.config.ts`; the HSL CSS variables they reference are defined in `src/index.css` under `@layer base`. Semantic tokens only — use `bg-primary`, `text-foreground`, `border-border`, `text-gold`, never raw hex. Brand color is teal `#2FABB7`; `--gold` is aliased to the same teal (historical name, kept for the `gold` Button variant). Dark mode tokens exist (`darkMode: "class"`) but nothing toggles `.dark` today.
 

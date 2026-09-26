@@ -1,0 +1,42 @@
+# cPanel / LiteSpeed (Apache-compatible) rules for the prerendered build.
+# `npm run build` writes one HTML file per route (servicii/distributie.html,
+# pallex.html, …) and 404.html; these rules serve them at clean URLs.
+# HTTP -> HTTPS and www -> comarnet.ro are already handled by the host.
+
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+# /servicii is both servicii.html and a folder (servicii/distributie.html);
+# without this the server would redirect /servicii to /servicii/.
+DirectorySlash Off
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Old-site URL still indexed by Google.
+RewriteRule ^index\.php$ / [R=301,L]
+
+# /index.html and /pallex.html -> / and /pallex, so each page has one URL.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]
+RewriteRule ^ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+([^\s?]+?)\.html[\s?]
+RewriteRule ^ /%1 [R=301,L]
+
+# Trailing slash -> none (/pallex/ -> /pallex).
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Clean URLs: /servicii/distributie -> servicii/distributie.html.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)$ /$1.html [L]
+
+# Anything else that is not a real file falls through to ErrorDocument 404.
+
+<IfModule mod_headers.c>
+  # Vite fingerprints everything in /assets, so it can be cached for a year.
+  <FilesMatch "-[A-Za-z0-9_-]{8}\.(js|css|avif|jpe?g|png|webp|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
