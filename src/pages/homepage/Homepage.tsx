@@ -6,6 +6,8 @@ import Kpis from "./components/Kpis";
 import PartnerBrands from "./components/PartnerBrands";
 import Roadmap from "./components/Roadmap";
 import Contact from "./components/Contact";
+import Faq from "./components/Faq";
+import LocationMap from "./components/LocationMap";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
@@ -14,9 +16,10 @@ const Homepage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash === "#contact") {
+    if (location.hash) {
+      const id = location.hash.slice(1);
       setTimeout(() => {
-        document.getElementById("contact")?.scrollIntoView({
+        document.getElementById(id)?.scrollIntoView({
           behavior: "smooth",
         });
       }, 500);
@@ -29,6 +32,8 @@ const Homepage = () => {
       <Coverage />
       <Roadmap />
       <Kpis />
+      <Faq />
+      <LocationMap />
       <Contact />
     </>
   );

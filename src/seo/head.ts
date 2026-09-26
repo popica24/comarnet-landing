@@ -1,3 +1,9 @@
+import {
+  localBusinessSchema,
+  organizationSchema,
+  pageBreadcrumbs,
+  websiteSchema,
+} from "@/lib/schema";
 import { SITE_URL, type PageSEO } from "./pages";
 
 // Every managed head element carries this attribute, so `useSEO` can swap the
@@ -67,7 +73,19 @@ export const getHeadTags = (page: PageSEO): HeadTag[] => {
     );
   }
 
-  for (const schema of page.schema ?? []) {
+  // Site-wide identity first, then the page's own nodes. Error pages get none,
+  // so business data is never asserted on a 404.
+  const schemas = page.noindex
+    ? []
+    : [
+        organizationSchema,
+        websiteSchema,
+        localBusinessSchema,
+        ...(page.breadcrumbs ? [pageBreadcrumbs(page.breadcrumbs)] : []),
+        ...(page.schema ?? []),
+      ];
+
+  for (const schema of schemas) {
     tags.push({
       tag: "script",
       attrs: { type: "application/ld+json" },

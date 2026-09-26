@@ -80,7 +80,9 @@ const PartnerBrands = () => {
                     >
                       <img
                         src={partner.logo}
-                        alt={partner.name}
+                        alt={`Logo ${partner.name} - partener Comar Net`}
+                        loading="lazy"
+                        decoding="async"
                         className="max-h-16 w-auto object-contain transition-all duration-300"
                       />
                     </div>

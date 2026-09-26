@@ -25,7 +25,7 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Entry chain:** `src/main.tsx` → `RouterProvider` → `src/router.tsx` (`createBrowserRouter(routes)`) → `src/routes.tsx` → `src/layout/Layout.tsx` (shell) → page. `main.tsx` hydrates when `#root` already has prerendered markup and does a plain client render otherwise (dev).
 
-**Routing.** All routes live in `src/routes.tsx` as children of the single `Layout` route (kept separate from `router.tsx` so the build-time prerender can import them without a browser). Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`, `/sustenabilitate`, plus a `*` catch-all rendering `pages/not-found`. Adding a page means adding a folder under `src/pages/`, one entry in `routes.tsx`, and one entry in `src/seo/pages.ts` (the prerender and sitemap iterate that file, not the routes).
+**Routing.** All routes live in `src/routes.tsx` as children of the single `Layout` route (kept separate from `router.tsx` so the build-time prerender can import them without a browser). Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`, `/sustenabilitate`, `/contact`, `/termeni`, `/confidentialitate`, `/cookies`, `/anpc`. A `*` catch-all and the layout's `errorElement` both render `pages/notfound`. Adding a page means adding a folder under `src/pages/`, one entry in `routes.tsx`, and one entry in `src/seo/pages.ts` (the prerender and sitemap iterate that file, not the routes).
 
 **Page structure convention.** Every page is `src/pages/<name>/` containing:
 - `<Name>.tsx` — thin composition root: calls `useSEO(SEO.<key>)` then renders section components in order.
@@ -36,9 +36,13 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Layout shell.** `Layout.tsx` renders fixed `Navigation`, a `framer-motion` `AnimatePresence` page transition keyed on `location.pathname`, then `Footer`. `AnimatedOutlet` freezes the outlet in `useState` so the exiting page keeps rendering its old content during the transition — don't replace it with a plain `<Outlet />`. `ScrollToTop` scrolls to top on navigation with a 500ms delay matched to the exit animation duration; the two must stay in sync.
 
+**Company data.** `src/config/company.ts` is the single source of truth for address, phone, email, hours, geo coordinates, legal identifiers (CUI, Reg. Com.) and Google Maps URLs. Never hardcode these — schemas, footer, nav, contact page and legal pages all read from it.
+
 **SEO & prerendering.** Per-page title, description, keywords and JSON-LD live in `src/seo/pages.ts` (`SEO`), with the canonical domain `SITE_URL = https://comarnet.ro`. `src/seo/head.ts` turns an entry into head tags; both consumers use it:
 - `scripts/prerender.mjs` (after `vite build --ssr src/entry-server.tsx --outDir dist-ssr`) renders every sitemap page plus the 404 page with `renderToString` into `dist/<path>.html` with its own `<head>`, then writes `dist/sitemap.xml` and deletes `dist-ssr/`.
 - `useSEO` swaps all `[data-seo]` head elements on client-side navigation.
+
+`head.ts` adds `Organization` + `WebSite` + `LocalBusiness` to every indexable page, then a `BreadcrumbList` built from the entry's `breadcrumbs`, then the entry's own `schema` (built with the helpers in `src/lib/schema.ts`: `serviceSchema`, `faqSchema`, `webPageSchema`, `contactPageSchema`, …). `noindex` entries (the 404) get no JSON-LD at all. Pages render the visible trail with `<Breadcrumbs items={SEO.<key>.breadcrumbs} />`, so markup and structured data cannot drift; "Acasă" is implicit in both. `index.html` holds static tags shared by every page plus a fallback block between `<!-- seo:start -->` / `<!-- seo:end -->` that the prerender replaces per route.
 
 Keep components render-safe in Node: browser APIs (`window`, `document`) only in effects and handlers. CommonJS deps that break in the SSR build go in `ssr.noExternal` in `vite.config.ts`. `Layout`'s `AnimatePresence` uses `initial={false}` so prerendered content is not rendered at `opacity: 0`. `public/.htaccess` (copied into `dist/`) serves `servicii/distributie.html` at `/servicii/distributie`, 301s trailing slashes, `.html` URLs and `/index.php` (an old-site URL still in Google), and has **no SPA fallback**: unknown paths get `404.html` with a real 404 status. `DirectorySlash Off` is required because `/servicii` is both `servicii.html` and a folder. `public/robots.txt` points to the sitemap. When deploying, upload `dist/` including the dotfile `.htaccess` (cPanel File Manager hides dotfiles by default).
 
@@ -54,4 +58,6 @@ Keep components render-safe in Node: browser APIs (`window`, `document`) only in
 
 **Env vars.** `VITE_APPS_SCRIPT` (contact form endpoint) and `VITE_PHONE_NUMBER` (displayed in nav). `.env` is gitignored; missing values fail silently at runtime.
 
-**Imports.** `@/` → `src/` (aliased in both `vite.config.ts` and `tsconfig.app.json` — update both if changed). Import from `react-router`, not `react-router-dom`. Images are imported as modules from `src/assets/`; only `logo.png` lives in `public/`.
+**Imports.** `@/` → `src/` (aliased in both `vite.config.ts` and `tsconfig.app.json` — update both if changed). Import from `react-router`, not `react-router-dom`. Images are imported as modules from `src/assets/`; `public/` holds only the files that need stable URLs: `logo.png`, `og-image.jpg` (1200×630), `robots.txt`, `.htaccess`. `sitemap.xml` is generated at build time — don't add one to `public/`.
+
+**Images.** Every `<img>` needs a descriptive Romanian `alt`. Below-the-fold images get `loading="lazy" decoding="async"`; the homepage hero is the LCP element and uses `fetchPriority="high"` instead.

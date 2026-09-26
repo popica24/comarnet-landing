@@ -24,7 +24,9 @@ const Coverage = () => {
         </div>
         <img
           src={map}
-          alt="Harta României cu județele Argeș și Teleorman, deservite de Comar Net"
+          alt="Harta României cu județele Argeș și Teleorman, acoperite de rețeaua de distribuție Comar Net"
+          loading="lazy"
+          decoding="async"
           className="w-xl mx-auto rounded-2xl border shadow"
           data-aos="fade-in"
           data-aos-delay="300"

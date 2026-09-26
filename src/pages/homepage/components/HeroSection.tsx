@@ -18,7 +18,9 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Distribuție produse alimentare Comar Net"
+          alt="Depozit Comar Net cu paleți de produse alimentare pregătite pentru distribuție"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-r from-hero-overlay/95 via-hero-overlay/80 to-hero-overlay/70 md:from-hero-overlay/90 md:via-hero-overlay/70 md:to-hero-overlay/60" />

@@ -4,14 +4,25 @@ import bgStoring from "@/assets/storing.avif";
 import { Link } from "react-router";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO } from "@/seo/pages";
+import Breadcrumbs from "@/components/Breadcrumbs";
+
+const { breadcrumbs } = SEO.services;
 
 const Services = () => {
   useSEO(SEO.services);
   return (
     <main className="min-h-screen mt-22">
-      <h1 className="sr-only">
-        Servicii de distribuție, logistică și depozitare în Pitești
-      </h1>
+      <Breadcrumbs items={breadcrumbs} className="pt-4 pb-6" />
+      <header className="container mx-auto px-4 sm:px-6 lg:px-8 pb-10 max-w-3xl">
+        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          Serviciile Comar Net
+        </h1>
+        <p className="mt-4 text-lg text-gray-600">
+          Acoperim întregul lanț de aprovizionare — de la depozitare și
+          gestiunea stocurilor, la logistică și distribuție națională. Alegeți
+          serviciul care vă interesează pentru detalii.
+        </p>
+      </header>
       <Link to={"/servicii/logistica"}>
         <section className="relative h-[33vh] w-full overflow-hidden clip-diagonal-top group cursor-pointer">
           <div
