@@ -11,4 +11,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ssr: {
+    // CommonJS packages whose default export Node can't resolve when externalized;
+    // bundle them into the prerender build (see scripts/prerender.mjs).
+    noExternal: [
+      "react-countup",
+      "countup.js",
+      "embla-carousel-react",
+      "embla-carousel-autoplay",
+      "sweetalert2",
+    ],
+  },
 });

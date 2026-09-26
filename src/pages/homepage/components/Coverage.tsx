@@ -13,17 +13,18 @@ const Coverage = () => {
           >
             RAZĂ DE ACȚIUNE
           </span>
-          <h1
+          <h2
             className="text-4xl text-gray-900 text-center font-bold"
             data-aos="fade-up"
             data-aos-delay="600"
             data-aos-duration="600"
           >
-            Mai jos, aveți harta cu județele în care acționăm
-          </h1>
+            Distribuim în județele Argeș și Teleorman
+          </h2>
         </div>
         <img
           src={map}
+          alt="Harta României cu județele Argeș și Teleorman, deservite de Comar Net"
           className="w-xl mx-auto rounded-2xl border shadow"
           data-aos="fade-in"
           data-aos-delay="300"

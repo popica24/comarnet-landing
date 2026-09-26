@@ -11,7 +11,7 @@ const Navigation = () => {
     { text: "Acasă", link: "/", comingSoon: false },
     { text: "Servicii", link: "/servicii", comingSoon: false },
     { text: "Pall-Ex", link: "/pallex", comingSoon: false },
-    { text: "Aria1", link: "#", comingSoon: true },
+    { text: "Aria1", link: "https://www.aria1.ro", external: true },
     { text: "Comar Net Shop", link: "#", comingSoon: true },
     { text: "Contact", link: "/#contact" },
   ];
@@ -109,7 +109,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link className="flex items-center gap-2" to="/">
-            <img src={logo} width={85} alt="Logo" />
+            <img src={logo} width={85} alt="Comar Net" />
           </Link>
 
           {/* Desktop Menu Items */}
@@ -127,6 +127,16 @@ const Navigation = () => {
                       Curând
                     </span>
                   </button>
+                ) : item.external ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-foreground hover:text-gold transition-colors duration-300 uppercase flex items-center gap-1"
+                  >
+                    {item.text}
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
                 ) : (
                   <Link
                     to={item.link}
@@ -197,6 +207,17 @@ const Navigation = () => {
                         Curând
                       </span>
                     </button>
+                  ) : item.external ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-foreground hover:text-gold transition-colors duration-300 py-2 uppercase flex items-center gap-1"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.text}
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   ) : (
                     <Link
                       to={item.link}

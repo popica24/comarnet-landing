@@ -3,17 +3,15 @@ import bgDistribution from "@/assets/distribution.avif";
 import bgStoring from "@/assets/storing.avif";
 import { Link } from "react-router";
 import { useSEO } from "@/hooks/useSEO";
+import { SEO } from "@/seo/pages";
 
 const Services = () => {
-  useSEO({
-    title: "Servicii de Distribuție, Logistică și Depozitare",
-    description:
-      "Descoperă gama completă de servicii Comar Net: distribuție națională, logistică eficientă, depozitare profesională și soluții personalizate pentru afacerea ta.",
-    keywords:
-      "servicii distribuție, logistică România, depozitare produse, transport marfă",
-  });
+  useSEO(SEO.services);
   return (
     <main className="min-h-screen mt-22">
+      <h1 className="sr-only">
+        Servicii de distribuție, logistică și depozitare în Pitești
+      </h1>
       <Link to={"/servicii/logistica"}>
         <section className="relative h-[33vh] w-full overflow-hidden clip-diagonal-top group cursor-pointer">
           <div
@@ -23,9 +21,9 @@ const Services = () => {
             <div className="absolute inset-0 bg-black/40 transition-all duration-500 ease-out group-hover:bg-black/20" />
           </div>
           <div className="relative z-10 flex items-center justify-end h-full px-8 md:px-16 lg:px-24">
-            <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-all duration-300 ease-out group-hover:underline group-hover:-translate-y-2">
+            <h2 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-all duration-300 ease-out group-hover:underline group-hover:-translate-y-2">
               Logistică
-            </h1>
+            </h2>
           </div>
         </section>
       </Link>

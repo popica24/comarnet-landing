@@ -50,14 +50,14 @@ const PartnerBrands = () => {
           >
             PARTENERII NOȘTRI
           </span>
-          <h1
+          <h2
             className="text-4xl text-gray-900 text-center font-bold"
             data-aos="fade-up"
             data-aos-delay="600"
             data-aos-duration="600"
           >
             Colaborăm cu cei mai buni parteneri
-          </h1>
+          </h2>
         </div>
 
         <div className="w-full py-12 bg-gray-50 rounded-lg">

@@ -93,14 +93,14 @@ const Roadmap: React.FC<RoadmapProps> = ({
           >
             {subtitle}
           </span>
-          <h1
+          <h2
             className="text-4xl text-gray-900 text-center font-bold"
             data-aos="fade-up"
             data-aos-delay="600"
             data-aos-duration="600"
           >
             {title}
-          </h1>
+          </h2>
         </div>
         {data.map((item, index) => (
           <RoadmapItem

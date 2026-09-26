@@ -92,14 +92,14 @@ const Contact = () => {
           >
             AI O PROPUNERE DE COLABORARE ?
           </span>
-          <h1
+          <h2
             className="text-4xl text-gray-900 text-center font-bold"
             data-aos="fade-up"
             data-aos-delay="600"
             data-aos-duration="600"
           >
             Completează formularul și hai să discutăm !
-          </h1>
+          </h2>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">

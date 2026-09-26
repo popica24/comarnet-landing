@@ -10,7 +10,7 @@ Marketing/landing site for **Comar Net**, a Romanian distribution, logistics and
 
 ```bash
 npm run dev       # Vite dev server
-npm run build     # tsc -b (type-check, project references) then vite build
+npm run build     # tsc -b, vite build, SSR build of src/entry-server.tsx, then scripts/prerender.mjs
 npm run lint      # eslint .
 npm run preview   # serve the production build
 ```
@@ -21,14 +21,14 @@ There is no test setup. `npm run build` is the only real correctness gate — it
 
 ## Architecture
 
-React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mode, Tailwind CSS v4, deployed to Vercel (`vercel.json` rewrites everything to `/index.html` for client-side routing).
+React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mode, Tailwind CSS v4, deployed to Vercel.
 
-**Entry chain:** `src/main.tsx` → `RouterProvider` → `src/router.tsx` → `src/layout/Layout.tsx` (shell) → page.
+**Entry chain:** `src/main.tsx` → `RouterProvider` → `src/router.tsx` (`createBrowserRouter(routes)`) → `src/routes.tsx` → `src/layout/Layout.tsx` (shell) → page. `main.tsx` hydrates when `#root` already has prerendered markup and does a plain client render otherwise (dev).
 
-**Routing.** All routes live in `src/router.tsx` as children of the single `Layout` route. Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`. Adding a page means adding a folder under `src/pages/` and one entry here.
+**Routing.** All routes live in `src/routes.tsx` as children of the single `Layout` route (kept separate from `router.tsx` so the build-time prerender can import them without a browser). Paths are Romanian: `/`, `/servicii`, `/servicii/distributie`, `/servicii/logistica`, `/servicii/depozitare`, `/pallex`, `/sustenabilitate`, plus a `*` catch-all rendering `pages/not-found`. Adding a page means adding a folder under `src/pages/`, one entry in `routes.tsx`, and one entry in `src/seo/pages.ts` (the prerender and sitemap iterate that file, not the routes).
 
 **Page structure convention.** Every page is `src/pages/<name>/` containing:
-- `<Name>.tsx` — thin composition root: calls `useSEO(...)` then renders section components in order.
+- `<Name>.tsx` — thin composition root: calls `useSEO(SEO.<key>)` then renders section components in order.
 - `index.ts` — re-export default (`import Homepage from "./Homepage"; export default Homepage;`), so router imports stay short.
 - `components/` — the page's own sections (`Hero`, `Features`, `Benefits`, `CTA`, …). These are page-local by design; the same section name in different pages is a different file with different content. Don't try to unify them.
 
@@ -36,7 +36,11 @@ React 19 + Vite (SWC) + TypeScript, React Router v7 in `createBrowserRouter` mod
 
 **Layout shell.** `Layout.tsx` renders fixed `Navigation`, a `framer-motion` `AnimatePresence` page transition keyed on `location.pathname`, then `Footer`. `AnimatedOutlet` freezes the outlet in `useState` so the exiting page keeps rendering its old content during the transition — don't replace it with a plain `<Outlet />`. `ScrollToTop` scrolls to top on navigation with a 500ms delay matched to the exit animation duration; the two must stay in sync.
 
-**SEO.** `src/hooks/useSEO.ts` imperatively writes `document.title`, meta tags (OG/Twitter/robots/geo), canonical link, and optional JSON-LD into `<head>` on mount. There is no react-helmet. Every page component should call it. Note this is client-side only — the served `index.html` has no per-route meta.
+**SEO & prerendering.** Per-page title, description, keywords and JSON-LD live in `src/seo/pages.ts` (`SEO`), with the canonical domain `SITE_URL = https://comarnet.ro`. `src/seo/head.ts` turns an entry into head tags; both consumers use it:
+- `scripts/prerender.mjs` (after `vite build --ssr src/entry-server.tsx --outDir dist-ssr`) renders every sitemap page plus the 404 page with `renderToString` into `dist/<path>.html` with its own `<head>`, then writes `dist/sitemap.xml` and deletes `dist-ssr/`.
+- `useSEO` swaps all `[data-seo]` head elements on client-side navigation.
+
+Keep components render-safe in Node: browser APIs (`window`, `document`) only in effects and handlers. CommonJS deps that break in the SSR build go in `ssr.noExternal` in `vite.config.ts`. `Layout`'s `AnimatePresence` uses `initial={false}` so prerendered content is not rendered at `opacity: 0`. `vercel.json` uses `cleanUrls` (serves `servicii/distributie.html` at `/servicii/distributie`) with **no SPA rewrite**: unknown paths get `404.html` with a real 404 status, and `/index.php` (an old-site URL still in Google) 301s to `/`. `public/robots.txt` points to the sitemap.
 
 **Styling.** Tailwind v4 via `@tailwindcss/vite`, but `src/index.css` pulls in a v3-shaped config with `@config "../tailwind.config.ts"`. Consequence: theme extensions (colors, keyframes, plugins) go in `tailwind.config.ts`; the HSL CSS variables they reference are defined in `src/index.css` under `@layer base`. Semantic tokens only — use `bg-primary`, `text-foreground`, `border-border`, `text-gold`, never raw hex. Brand color is teal `#2FABB7`; `--gold` is aliased to the same teal (historical name, kept for the `gold` Button variant). Dark mode tokens exist (`darkMode: "class"`) but nothing toggles `.dark` today.
 

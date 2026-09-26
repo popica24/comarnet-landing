@@ -1,14 +1,9 @@
 import { useSEO } from "@/hooks/useSEO";
+import { SEO } from "@/seo/pages";
 import Hero from "./components/Hero";
 
 const Storage = () => {
-  useSEO({
-    title: "Servicii de Depozitare și Warehousing",
-    description:
-      "Spații moderne de depozitare cu control de temperatură, sistem de management WMS, securitate 24/7 și acces rapid la stocuri pentru afacerea ta.",
-    keywords:
-      "depozitare produse, warehousing România, spații depozitare, gestiune stocuri",
-  });
+  useSEO(SEO.storage);
   return (
     <div className="min-h-screen">
       <Hero />

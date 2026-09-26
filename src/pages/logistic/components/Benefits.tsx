@@ -38,6 +38,7 @@ const Benefits = () => {
               <img
                 className="w-xl mx-auto rounded-2xl border shadow"
                 src={map}
+                alt="Harta județelor Argeș și Teleorman, deservite de Comar Net"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 h-32 w-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>

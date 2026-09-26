@@ -88,11 +88,11 @@ const HeroSection = () => {
                 </div>
 
                 {/* Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-primary-foreground mb-4 md:mb-6 leading-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-primary-foreground mb-4 md:mb-6 leading-tight">
                   Soluții Complete
                   <br />
                   Pentru Afacerea Ta
-                </h1>
+                </h2>
 
                 {/* Divider Line */}
                 <div className="w-20 md:w-32 h-1 bg-gold mb-6 md:mb-8" />

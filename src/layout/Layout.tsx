@@ -12,7 +12,9 @@ const Layout = () => {
     <>
       <Navigation />
       <ScrollToTop />
-      <AnimatePresence mode="wait">
+      {/* initial={false}: the first page is prerendered HTML and must be visible
+          without JavaScript, so only route changes animate. */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={location.pathname}
           initial={{ opacity: 0, y: 20 }}

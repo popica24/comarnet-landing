@@ -27,7 +27,7 @@ const Footer = () => {
                 title="Company"
                 className="inline-flex items-center bg-white rounded-md shadow"
               >
-                <img src={logo} alt="" width={60} />
+                <img src={logo} alt="Comar Net" width={60} />
                 <span className="ml-2 text-xl font-bold tracking-wide text-primary uppercase mr-2">
                   EXCELENȚĂ ÎN DISTRIBUȚIE
                 </span>
@@ -132,7 +132,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="/contact"
+                      href="/#contact"
                       className="transition-colors duration-300 text-gray-200 hover:text-white"
                     >
                       Contact

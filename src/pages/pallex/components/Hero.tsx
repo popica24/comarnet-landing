@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
         <p className="text-sm md:text-base text-foreground/80 mb-6 md:mb-8 leading-relaxed">
           Partener afiliat Pall-Ex România din 2025, oferă servicii de preluare
-          și distribuire a mârfurilor paletizate din județul Argeș către orice
+          și distribuire a mărfurilor paletizate din județul Argeș către orice
           destinație din țară.
         </p>
       </div>

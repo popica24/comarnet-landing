@@ -1,4 +1,5 @@
 import { useSEO } from "@/hooks/useSEO";
+import { SEO } from "@/seo/pages";
 import Coverage from "./components/Coverage";
 import HeroSection from "./components/HeroSection";
 import Kpis from "./components/Kpis";
@@ -9,37 +10,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 
 const Homepage = () => {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Comar Net | Acasa",
-    description:
-      "Distribuție produse alimentare și non-alimentare pentru profesioniști",
-    url: "https://www.comar-net.ro",
-    logo: "https://www.comar-net.ro/logo.png",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "RO",
-      addressRegion: "Argeș",
-      addressLocality: "Pitești",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+40-XXX-XXX-XXX",
-      contactType: "customer service",
-      areaServed: "RO",
-      availableLanguage: "Romanian",
-    },
-  };
-
-  useSEO({
-    title: "Distribuție Produse Alimentare și Non-Alimentare",
-    description:
-      "Comar Net - Lider în distribuția de produse alimentare și non-alimentare pentru profesioniști. Peste 18 ani de experiență, livrări prompte și stocuri consistente.",
-    keywords:
-      "distributie alimente, pallex, transport marfa, magazin online, depozitare",
-    schema,
-  });
+  useSEO(SEO.home);
   const location = useLocation();
 
   useEffect(() => {
